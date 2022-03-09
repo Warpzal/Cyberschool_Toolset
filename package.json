@@ -1,0 +1,23 @@
+{
+  "name": "personal-scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luluzal/Personal-Scripts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Luluzal/Personal-Scripts/issues"
+  },
+  "homepage": "https://github.com/Luluzal/Personal-Scripts#readme",
+  "dependencies": {
+    "yargs": "^17.3.1"
+  }
+}
