@@ -59,6 +59,7 @@ const createNewHtmlWithRelativePaths = (appendedPath = '') => {
 
 const stripInlineStyles = (standAlone = false) => {
     const REGEX_INLINE_STYLE = /style=".+"/g
+    const REGEX_ID = /id=".+"/g
     const REGEX_CLASS = /class=".+"/g
     let output =
         standAlone === false
@@ -66,10 +67,12 @@ const stripInlineStyles = (standAlone = false) => {
                   .readFileSync('../output.html', 'utf-8')
                   .replaceAll(REGEX_INLINE_STYLE, '')
                   .replaceAll(REGEX_CLASS, '')
+                  .replaceAll(REGEX_ID, '')
             : fs
                   .readFileSync('../input.html', 'utf-8')
                   .replaceAll(REGEX_INLINE_STYLE, '')
                   .replaceAll(REGEX_CLASS, '')
+                  .replaceAll(REGEX_ID, '')
     fs.writeFileSync('../output.html', output)
 }
 
