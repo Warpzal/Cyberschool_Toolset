@@ -92,8 +92,9 @@ const downloadFiles = async () => {
     const downloadLinks = Array.from(
         new Set(absolutePaths.map((path) => path.replace(/\s/g, '%20')))
     ) // For URL parsing
-    if (fs.existsSync(`${downloadsDirectory}`))
+    if (fs.existsSync(`${downloadsDirectory}`)) {
         await exec(`rm -r ${downloadsDirectory}`)
+    }
 
     for (const link of downloadLinks) {
         try {
@@ -103,12 +104,8 @@ const downloadFiles = async () => {
             console.error(`Failed to download - ${link}`)
         }
     }
-    if (fs.existsSync(`/home/arodriguez/WSL/Downloads`))
-        await exec(`rm -r /home/arodriguez/WSL/Downloads`)
-    try {
-        await exec(`cp -r ${downloadsDirectory} /home/arodriguez/WSL`)
-    } catch {
-        console.log('Nothing to download on this page')
+    if (!fs.existsSync(downloadsDirectory)) {
+        console.log('No files to download')
     }
 }
 
