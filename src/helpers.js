@@ -105,7 +105,7 @@ const downloadFiles = async () => {
     }
     if (!fs.existsSync(downloadsDirectory)) {
         console.log('Nothing to download on this page')
-        return
+        return false
     }
     if (fs.existsSync(`/home/arodriguez/WSL/Downloads`))
         await exec(`rm -r /home/arodriguez/WSL/Downloads`)

@@ -113,18 +113,22 @@ const createCyberschoolPage = async (title, html) => {
         )
         // Wait for textbox to load
         await page.waitForNetworkIdle()
+        await page.waitForSelector('#cke_133')
         // Change URL title
         // Enter source tab
         await page.click('#cke_133')
         // Paste source code (selector, html)
-        await page.type('textarea', html)
+        await wait(2000)
+        await page.type('textarea', `<h1>hello</h1>`)
         // Publish Content
         await page.click('#ext-gen216')
         await wait(1000)
     }
+    await page.screenshot({ path: 'example3.png' })
 
     await login()
     await createPage()
+    await browser.close()
 }
 
 module.exports = {
