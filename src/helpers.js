@@ -1,32 +1,19 @@
-const util = require('util')
-const exec = util.promisify(require('child_process').exec)
-const fs = require('fs')
+const util = require("util")
+const exec = util.promisify(require("child_process").exec)
+const fs = require("fs")
 
-const {
-    domain,
-    input,
-    newRelativePath,
-    downloadsDirectory,
-} = require('./config.js')
+const { domain, input, newRelativePath, downloadsDirectory } = require("./config.js")
 
 //  List of files in href="bleh" src="bleh"
 let files = []
-
 // Contains all files to transfer but as their full paths
 // ex: /cms/blah.png -> https://domain.com/cms/blah.png
 let absolutePaths = []
-
-// Contains new paths for domain transfer
-// ex: /path/filename
-let relativePaths = []
-
 const REGEX_FILE_NAME = /[^\/]+\.(pdf|jpg|png|jpeg|docx|doc|gif|xsl)/g
-
-const REGEX_FILE_SRC_RELATIVE =
-    /(href|src)\="\/.+(pdf|jpg|png|jpeg|docx|doc|gif|xsl)"/g
+const REGEX_FILE_SRC_RELATIVE = /(href|src)\="\/.+(pdf|jpg|png|jpeg|docx|doc|gif|xsl)"/g
 const REGEX_FILE_SRC_HARDCODED = new RegExp(
     `(href|src)="${domain}.+(pdf|jpg|png|jpeg|docx|doc|gif|xsl)"`,
-    'g'
+    "g"
 )
 
 const getFiles = () => {
@@ -38,23 +25,23 @@ const createDownloadablePaths = () => {
     absolutePaths = files.map((file) => {
         return file
             .replace(`href="/`, `${domain}/`)
-            .replace('href="', '')
+            .replace('href="', "")
             .replace(`src="/`, `${domain}/`)
-            .replace('src="', '')
-            .replace('"', '')
+            .replace('src="', "")
+            .replace('"', "")
     })
 }
 
-const createNewHtmlWithRelativePaths = (appendedPath = '') => {
+const createNewHtmlWithRelativePaths = (appendedPath = "") => {
     const fileNames = files.map((file) => file.match(REGEX_FILE_NAME))
     let output = input
     for (const [index, name] of fileNames.entries()) {
-        const fileRef = files[index].includes('href') ? 'href' : 'src'
+        const fileRef = files[index].includes("href") ? "href" : "src"
         const newPath = `${fileRef}="${newRelativePath + appendedPath + name}"`
         output = output.replace(files[index], newPath)
         console.log(`New path: ${newPath}`)
     }
-    fs.writeFileSync('../output.html', output)
+    fs.writeFileSync("../output.html", output)
 }
 
 const stripInlineStyles = (standAlone = false) => {
@@ -64,36 +51,28 @@ const stripInlineStyles = (standAlone = false) => {
     let output =
         standAlone === false
             ? fs
-                  .readFileSync('../output.html', 'utf-8')
-                  .replaceAll(REGEX_INLINE_STYLE, '')
-                  .replaceAll(REGEX_CLASS, '')
-                  .replaceAll(REGEX_ID, '')
+                  .readFileSync("../output.html", "utf-8")
+                  .replaceAll(REGEX_INLINE_STYLE, "")
+                  .replaceAll(REGEX_CLASS, "")
+                  .replaceAll(REGEX_ID, "")
             : fs
-                  .readFileSync('../input.html', 'utf-8')
-                  .replaceAll(REGEX_INLINE_STYLE, '')
-                  .replaceAll(REGEX_CLASS, '')
-                  .replaceAll(REGEX_ID, '')
-    fs.writeFileSync('../output.html', output)
+                  .readFileSync("../input.html", "utf-8")
+                  .replaceAll(REGEX_INLINE_STYLE, "")
+                  .replaceAll(REGEX_CLASS, "")
+                  .replaceAll(REGEX_ID, "")
+    fs.writeFileSync("../output.html", output)
 }
 
 const displayLinkedPages = () => {
-    const REGEX_DOMAIN_CONTENT = new RegExp(`"${domain}\/.+"`, 'g')
-    let domainContent =
-        input
-            .match(REGEX_DOMAIN_CONTENT)
-            ?.map((link) => link.slice(1, link.length - 1)) ?? []
-    domainContent = domainContent.filter(
-        (link) => (link, !files.includes(`href="${link}"`))
-    )
-    if (domainContent.length > 0) console.log('Linked Pages: ', domainContent)
+    const REGEX_DOMAIN_CONTENT = new RegExp(`"${domain}\/.+"`, "g")
+    let domainContent = input.match(REGEX_DOMAIN_CONTENT)?.map((link) => link.slice(1, link.length - 1)) ?? []
+    domainContent = domainContent.filter((link) => (link, !files.includes(`href="${link}"`)))
+    if (domainContent.length > 0) console.log("Linked Pages: ", domainContent)
 }
 
 const downloadFiles = async () => {
-    const downloadLinks = Array.from(
-        new Set(absolutePaths.map((path) => path.replace(/\s/g, '%20')))
-    ) // For URL parsing
-    if (fs.existsSync(`${downloadsDirectory}`))
-        await exec(`rm -r ${downloadsDirectory}`)
+    const downloadLinks = Array.from(new Set(absolutePaths.map((path) => path.replace(/\s/g, "%20")))) // For URL parsing
+    if (fs.existsSync(`${downloadsDirectory}`)) await exec(`rm -r ${downloadsDirectory}`)
 
     for (const link of downloadLinks) {
         try {
@@ -104,15 +83,14 @@ const downloadFiles = async () => {
         }
     }
     if (!fs.existsSync(downloadsDirectory)) {
-        console.log('Nothing to download on this page')
+        console.log("Nothing to download on this page")
         return false
     }
-    if (fs.existsSync(`/home/arodriguez/WSL/Downloads`))
-        await exec(`rm -r /home/arodriguez/WSL/Downloads`)
+    if (fs.existsSync(`/home/arodriguez/WSL/Downloads`)) await exec(`rm -r /home/arodriguez/WSL/Downloads`)
     try {
         await exec(`cp -r ${downloadsDirectory} /home/arodriguez/WSL`)
     } catch {
-        console.log('WSL file doesnt exist')
+        console.log("WSL file doesnt exist")
     }
 }
 

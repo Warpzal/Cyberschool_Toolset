@@ -1,7 +1,5 @@
-// Future for yargs command line parsing
-const { string } = require('yargs')
-const yargs = require('yargs')
-const fs = require('fs')
+const yargs = require("yargs")
+const fs = require("fs")
 
 const {
     getFiles,
@@ -10,37 +8,37 @@ const {
     createNewHtmlWithRelativePaths,
     stripInlineStyles,
     displayLinkedPages,
-} = require('./helpers.js')
+} = require("./helpers.js")
 
 const {
     createCyberschoolPage,
     uploadDocumentsToCyberschool,
-} = require('./scrape.js')
+} = require("./scrape.js")
 
 yargs.command({
-    command: 'createpage',
-    describe: 'Create Page from output.html and title paramater',
+    command: "createpage",
+    describe: "Create Page from output.html and title paramater",
     builder: {
         t: {
-            describe: 'Title of page',
+            describe: "Title of page",
             demandOption: true,
-            type: 'string',
+            type: "string",
         },
     },
     async handler(argv) {
-        const html = fs.readFileSync('../output.html', 'utf-8')
+        const html = fs.readFileSync("../output.html", "utf-8")
         await createCyberschoolPage(argv.t, html)
     },
 })
 
 yargs.command({
-    command: 'download',
-    describe: 'Download all relevant files based off domain and input.html',
+    command: "download",
+    describe: "Download all relevant files based off domain and input.html",
     builder: {
         u: {
-            describe: 'Upload files automatically to cyberschool',
+            describe: "Upload files automatically to cyberschool",
             demandOption: false,
-            type: 'boolean',
+            type: "boolean",
         },
     },
     async handler(argv) {
@@ -54,28 +52,28 @@ yargs.command({
 })
 
 yargs.command({
-    command: 'strip',
-    describe: 'Remove all Styles and Classnames from input.html directly',
+    command: "strip",
+    describe: "Remove all Styles and Classnames from input.html directly",
     handler() {
         stripInlineStyles(true)
     },
 })
 
 yargs.command({
-    command: 'createpath',
-    describe: 'Creates new relative paths based on config.js',
+    command: "createpath",
+    describe: "Creates new relative paths based on config.js",
     builder: {
         p: {
             describe:
-                'Appends to the new relative path ex: files/public/newStuff/newStuff/file.pdf',
+                "Appends to the new relative path ex: files/public/newStuff/newStuff/file.pdf",
             demandOption: false,
-            type: 'string',
+            type: "string",
         },
         s: {
             describe:
-                'Strips inline styles and classes from HTML when creating new HTML file',
+                "Strips inline styles and classes from HTML when creating new HTML file",
             demandOption: false,
-            type: 'boolean',
+            type: "boolean",
         },
     },
     handler(argv) {
