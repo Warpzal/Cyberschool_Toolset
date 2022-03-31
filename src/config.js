@@ -10,8 +10,8 @@ const newRelativePath = `/files/public_files/`;
 const downloadsDirectory = "../Downloads";
 
 // If you want to auto create pages or auto download content
-const username = "arodriguez";
-const password = "awesome9";
+const username = ''
+const password = ''
 
 module.exports = {
   input,
