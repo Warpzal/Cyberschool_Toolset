@@ -3,6 +3,27 @@ const puppeteer = require("puppeteer")
 const { cyberschool_domain, username, password, downloadsDirectory } = require("./config")
 const { wait } = require("./helpers")
 
+const createNavigationItem = async(label, type) => {
+  const browser = await puppeteer.launch()
+  const page = await browser.newPage()
+
+  const login = async () => {
+      await page.goto(cyberschool_domain)
+      await page.click(
+          "#topPagerBar > div > div.col-xs-12.col-md-6.col-lg-6.topPagerBarRight > div:nth-child(2) > a"
+      )
+      await page.waitForNetworkIdle()
+      await page.type("#username", username, { delay: 100 })
+      await page.type("#pwd", password, { delay: 100 })
+      // Submit Login
+      await Promise.all([
+          page.click("#userLogin > div > div > div.modal-body > form > button"),
+          page.waitForNavigation(),
+      ])
+    }
+
+}
+
 const uploadDocumentsToCyberschool = async () => {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
