@@ -1,0 +1,415 @@
+#content a {
+    color: #00ad92;
+}
+#content p {
+    line-height: 1.6em !important;
+    margin: 0.8em 0 !important;
+}
+#content h1,
+#content h2,
+#content h3,
+#content h4 {
+    line-height: 1.8em !important;
+}
+#content ul ul {
+    margin-left: 30px;
+    list-style-type: circle;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span:not(.fa) {
+    font-family: 'PT Sans' !important;
+}
+h4 {
+    font-size: 18px;
+}
+h5 {
+    font-size: 16px;
+}
+h6 {
+    font-size: 14px;
+}
+.pageData {
+    font-family: Helvetica, arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+    padding: 30px;
+    color: #333;
+}
+.pageData > *:first-child {
+    margin-top: 0 !important;
+}
+.pageData > *:last-child {
+    margin-bottom: 0 !important;
+}
+.pageData a {
+    color: #4183c4;
+    text-decoration: none;
+}
+.pageData a.absent {
+    color: #cc0000;
+}
+.pageData a.anchor {
+    display: block;
+    padding-left: 30px;
+    margin-left: -30px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+.pageData h1,
+.pageData h2,
+.pageData h3,
+.pageData h4,
+.pageData h5,
+.pageData h6 {
+    margin: 20px 0 10px;
+    padding: 0;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+    cursor: text;
+    position: relative;
+}
+.pageData h2:first-child,
+.pageData h1:first-child,
+.pageData h1:first-child + h2,
+.pageData h3:first-child,
+.pageData h4:first-child,
+.pageData h5:first-child,
+.pageData h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+.pageData h1:hover a.anchor,
+.pageData h2:hover a.anchor,
+.pageData h3:hover a.anchor,
+.pageData h4:hover a.anchor,
+.pageData h5:hover a.anchor,
+.pageData h6:hover a.anchor {
+    text-decoration: none;
+}
+.pageData h1 tt,
+.pageData h1 code {
+    font-size: inherit;
+}
+.pageData h2 tt,
+.pageData h2 code {
+    font-size: inherit;
+}
+.pageData h3 tt,
+.pageData h3 code {
+    font-size: inherit;
+}
+.pageData h4 tt,
+.pageData h4 code {
+    font-size: inherit;
+}
+.pageData h5 tt,
+.pageData h5 code {
+    font-size: inherit;
+}
+.pageData h6 tt,
+.pageData h6 code {
+    font-size: inherit;
+}
+.pageData h1 {
+    font-size: 28px;
+    color: black;
+}
+.pageData h2 {
+    font-size: 24px;
+    color: black;
+}
+.pageData h3 {
+    font-size: 18px;
+}
+.pageData h4 {
+    font-size: 16px;
+}
+.pageData h5 {
+    font-size: 14px;
+}
+.pageData h6 {
+    color: #777777;
+    font-size: 14px;
+}
+.pageData p,
+.pageData blockquote,
+.pageData ul,
+.pageData ol,
+.pageData dl,
+.pageData li,
+.pageData table,
+.pageData pre {
+    margin: 15px 0;
+}
+.pageData hr {
+    border: 0 none;
+    color: #cccccc;
+    height: 4px;
+    padding: 0;
+}
+.pageData > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+.pageData > h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+.pageData > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+.pageData > h3:first-child,
+.pageData > h4:first-child,
+.pageData > h5:first-child,
+.pageData > h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+.pageData a:first-child h1,
+.pageData a:first-child h2,
+.pageData a:first-child h3,
+.pageData a:first-child h4,
+.pageData a:first-child h5,
+.pageData a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+.pageData h1 p,
+.pageData h2 p,
+.pageData h3 p,
+.pageData h4 p,
+.pageData h5 p,
+.pageData h6 p {
+    margin-top: 0;
+}
+.pageData li p.first {
+    display: inline-block;
+}
+.pageData ul,
+.pageData ol {
+    padding-left: 30px;
+}
+.pageData ul :first-child,
+.pageData ol :first-child {
+    margin-top: 0;
+}
+.pageData ul :last-child,
+.pageData ol :last-child {
+    margin-bottom: 0;
+}
+.pageData dl {
+    padding: 0;
+}
+.pageData dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px;
+}
+.pageData dl dt:first-child {
+    padding: 0;
+}
+.pageData dl dt > :first-child {
+    margin-top: 0;
+}
+.pageData dl dt > :last-child {
+    margin-bottom: 0;
+}
+.pageData dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px;
+}
+.pageData dl dd > :first-child {
+    margin-top: 0;
+}
+.pageData dl dd > :last-child {
+    margin-bottom: 0;
+}
+.pageData blockquote {
+    border-left: 4px solid #dddddd;
+    padding: 0 15px;
+    color: #777777;
+}
+.pageData blockquote > :first-child {
+    margin-top: 0;
+}
+.pageData blockquote > :last-child {
+    margin-bottom: 0;
+}
+.pageData table {
+    padding: 0;
+    max-width: 100% !important;
+    width: 100%;
+    border: 0px solid !important;
+}
+.pageData table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+.pageData table tr:nth-child(2n) {
+    background-color: #f8f8f8;
+}
+.pageData table tr th {
+    font-weight: bold;
+    border: 1px solid #cccccc;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+.pageData table tr td {
+    border: 1px solid #cccccc;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+.pageData table tr th :first-child,
+.pageData table tr td :first-child {
+    margin-top: 0;
+}
+.pageData table tr th :last-child,
+.pageData table tr td :last-child {
+    margin-bottom: 0;
+}
+.pageData img {
+    max-width: 100%;
+}
+.pageData span.frame {
+    display: block;
+    overflow: hidden;
+}
+.pageData span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto;
+}
+.pageData span.frame span img {
+    display: block;
+    float: left;
+}
+.pageData span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0;
+}
+.pageData span.align-center {
+    display: block;
+    overflow: hidden;
+    clear: both;
+}
+.pageData span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center;
+}
+.pageData span.align-center span img {
+    margin: 0 auto;
+    text-align: center;
+}
+.pageData span.align-right {
+    display: block;
+    overflow: hidden;
+    clear: both;
+}
+.pageData span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right;
+}
+.pageData span.align-right span img {
+    margin: 0;
+    text-align: right;
+}
+.pageData span.float-left {
+    display: block;
+    margin-right: 13px;
+    overflow: hidden;
+    float: left;
+}
+.pageData span.float-left span {
+    margin: 13px 0 0;
+}
+.pageData span.float-right {
+    display: block;
+    margin-left: 13px;
+    overflow: hidden;
+    float: right;
+}
+.pageData span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right;
+}
+.pageData code,
+.pageData .pageData tt {
+    margin: 0 2px;
+    padding: 0 5px;
+    white-space: nowrap;
+    border: 1px solid #eaeaea;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+}
+.pageData pre code {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    border: none;
+    background: transparent;
+}
+.pageData pre {
+    background-color: #f8f8f8;
+    border: 1px solid #cccccc;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+    border-radius: 3px;
+}
+.pageData pre {
+    background-color: #f8f8f8;
+    border: 1px solid #cccccc;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+    border-radius: 3px;
+}
+.pageData pre code,
+.pageData pre tt {
+    background-color: transparent;
+    border: none;
+}
+#content h4,
+#content p,
+#content blockquote,
+#content ul,
+#content fieldset,
+#content ol,
+#content dl,
+#content dir,
+#content menu {
+    color: black !important;
+}
