@@ -3,7 +3,7 @@ const fs = require('fs')
 const input = fs.readFileSync('../input.html', 'utf-8')
 // Don't include the / at the end on domain
 // Leave blank if you want to download everything (TODO)
-const domain = 'http://fcrsd.org/'
+const domain = 'https://fcrsd.org/'
 const cyberschool_domain = 'https://forestcity.cyberschool.com/'
 
 const newRelativePath = `/files/public_files/`
